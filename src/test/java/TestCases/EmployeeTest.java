@@ -28,8 +28,8 @@ public class EmployeeTest extends BaseTest {
         LoginPage loginPage = new LoginPage(webDriver);
         // login with username and password provided from test.properties file
         loginPage.Login(System.getProperty("account.username"), System.getProperty("account.password"));
-        // open dashboard page to avoid a bug in the system
-        //webDriver.get(System.getProperty("target.homepage"));
+
+
     }
 
     @Test(priority = 1)
