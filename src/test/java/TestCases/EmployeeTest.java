@@ -40,5 +40,44 @@ public class EmployeeTest extends BaseTest {
         Assert.assertEquals(result, searchName);
         System.out.println("assertSearchTest is done successfully");
     }
+    @Test(priority = 2)
+    public void add_personal_info() throws InterruptedException {
+
+        employeePage=new EmployeePage(webDriver);
+
+        employeePage.add_personal_info(System.getProperty("add.Firstname"), System.getProperty("add.Firstname_arabic"),
+                System.getProperty("add.Emp_id"), System.getProperty("add.National_id"),
+                System.getProperty("add.nationality"), System.getProperty("add.Email_id"));
+
+
+    }
+    @Test(priority = 3)
+    public void add_organization() throws InterruptedException {
+
+        employeePage.add_organization(System.getProperty("add.joining_date"),System.getProperty("add.Employment_Type"),
+                System.getProperty("add.Department"),System.getProperty("add.Wrk_location"),
+                System.getProperty("add.line_manager"), System.getProperty("add.access")
+                ,System.getProperty("add.contract_type"));
+
+
+    }
+    @Test(priority = 4)
+    public void Finances_Insurance() throws InterruptedException {
+
+        employeePage.Finances_Insurance(System.getProperty("add.Basic_sal"), System.getProperty("add.Bank_country"),
+                System.getProperty("add.bank_name"), System.getProperty("add.IBAN"));
+
+
+    }
+    @Test(priority = 5)
+    public void Annual_Leave_Attendance_Policy() throws InterruptedException {
+
+        employeePage.Annual_Leave_Attendance_Policy();
+
+
+    }
+
+
+
 
 }
