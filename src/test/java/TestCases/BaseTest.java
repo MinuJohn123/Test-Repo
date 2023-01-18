@@ -70,7 +70,7 @@ public static WebDriverWait webDriverWait;
                 FileUtils.copyFile(src, new File(System.getProperty("path.FailingScreenshots") + "/" + result.getName() +"_"+strDate+ ".png"));
                 System.out.println("Successfully captured a screenshot");
             } catch (Exception e) {
-                System.out.println("Exception while taking screenshot" + e.getMessage());
+                System.out.println("Exception while taking screenshot " + e.getMessage());
             }
         }
     }
