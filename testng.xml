@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="E:/Noha/Projects/fox hr/AutomationFoxHr">
+        <classes>
+            <class name="TestCases.EmployeeTest">
+                <methods>
+                    <include name="assertSearchByNameTest"/>
+                    <include name="add_personal_info"/>
+                    <include name="add_organization"/>
+                    <include name="Finances_Insurance"/>
+                    <include name="Annual_Leave_Attendance_Policy"/>
+                    <include name="Employee_creation_confirmation"/>
+                </methods>
+            </class>
+            <class name="TestCases.LeaveRequestTest">
+                <methods>
+                    <include name="assertRequestDemo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
