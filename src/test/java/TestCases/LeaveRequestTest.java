@@ -36,7 +36,6 @@ public class LeaveRequestTest extends BaseTest {
     }
 
     @Test
-
     private void assertRequestDemo() {
         String result = requestDemoPage.createRequest(leavereuestinfo.get("year").getAsString(), leavereuestinfo.get("day").getAsString(), leavereuestinfo.get("month").getAsString());
         String expectedTxt = "Successfully Created";

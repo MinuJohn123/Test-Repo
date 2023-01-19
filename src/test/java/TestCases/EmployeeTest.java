@@ -32,7 +32,7 @@ public class EmployeeTest extends BaseTest {
         loginPage.Login(System.getProperty("account.username"), System.getProperty("account.password"));
     }
 
-    //@Test(priority = 1)
+    @Test(priority = 1)
     public void assertSearchByNameTest() {
         String searchName = employeeInfo.get("SearchName").getAsString();
         String result = employeePage.SearchByName(searchName);
@@ -76,7 +76,8 @@ public class EmployeeTest extends BaseTest {
 
 
     }
-    @Test(priority = 5)
+
+    @Test(priority = 6)
     public void Employee_creation_confirmation() throws InterruptedException {
 
         employeePage.Employee_creation_confirmation();
