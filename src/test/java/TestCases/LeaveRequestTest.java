@@ -32,7 +32,7 @@ public class LeaveRequestTest extends BaseTest {
         // initialize an object from login page
         loginPage = new LoginPage(webDriver);
         // login with username and password provided from test.properties file
-        loginPage.Login(System.getProperty("account.username"), System.getProperty("account.password"));
+        loginPage.Login(System.getProperty("account.username.employee"), System.getProperty("account.password"));
     }
 
     @Test

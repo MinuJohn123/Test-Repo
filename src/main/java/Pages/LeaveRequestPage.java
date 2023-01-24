@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LeaveRequestPage {
 
     public WebDriverWait wait;
+    JavascriptExecutor js;
     @FindBy(xpath = "//*[@class=\"mdi mdi-menu\"]")
     WebElement menuBtn;
     @FindBy(xpath = "//*[@routerlink=\"request\"]")
@@ -39,21 +41,22 @@ public class LeaveRequestPage {
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 40);
         actions = new Actions(driver);
+        js = (JavascriptExecutor) driver;
     }
 
     public String createRequest(String year, String day, String month) {
 
         wait.until(ExpectedConditions.elementToBeClickable(menuBtn));
-        menuBtn.click();
+        js.executeScript("arguments[0].click()", menuBtn);
 
         wait.until(ExpectedConditions.elementToBeClickable(requestsMenuItem));
-        requestsMenuItem.click();
+        js.executeScript("arguments[0].click()", requestsMenuItem);
 
         wait.until(ExpectedConditions.elementToBeClickable(addLeaveReqBtn));
-        addLeaveReqBtn.click();
+        js.executeScript("arguments[0].click()", addLeaveReqBtn);
 
         wait.until(ExpectedConditions.elementToBeClickable(leaveStartDate));
-        actions.moveToElement(leaveStartDate).click().perform();
+        js.executeScript("arguments[0].click()", leaveStartDate);
         leaveStartDate.sendKeys(Keys.ARROW_LEFT);
         actions.sendKeys(year).build().perform();
         leaveStartDate.sendKeys(Keys.ARROW_LEFT);
@@ -64,10 +67,10 @@ public class LeaveRequestPage {
 
 
         wait.until(ExpectedConditions.elementToBeClickable(selectOptionDdl));
-        selectOptionDdl.click();
-        selectItemDdl.click();
+        js.executeScript("arguments[0].click()", selectOptionDdl);
+        js.executeScript("arguments[0].click()", selectItemDdl);
 
-        saveReqBtn.click();
+        js.executeScript("arguments[0].click()", saveReqBtn);
 
         String actualTxt = alerTxt.getText();
         System.out.println("Actual Result is " + actualTxt);
