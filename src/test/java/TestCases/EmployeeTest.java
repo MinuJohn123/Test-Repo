@@ -13,6 +13,7 @@ public class EmployeeTest extends BaseTest {
     private EmployeePage employeePage;
     private LoginPage loginPage;
     private JsonObject employeeInfo;
+    private EmployeePage filter;
 
 
     @BeforeClass
@@ -82,8 +83,21 @@ public class EmployeeTest extends BaseTest {
 
         employeePage.Employee_creation_confirmation();
 
+    }
+    @Test (priority= 7)
+
+    public void Apply_filter() throws InterruptedException
+    {
+
+        filter=new EmployeePage(webDriver);
+        boolean result= filter.filtered();
+        Assert.assertTrue(result,"Successful filter applied  ");
+
+
+
 
     }
+
 
 
 

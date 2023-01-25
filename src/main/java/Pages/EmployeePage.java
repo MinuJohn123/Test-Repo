@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeePage {
@@ -111,6 +112,50 @@ public class EmployeePage {
 
     @FindBy(xpath = "//button[normalize-space()='No']")
     private WebElement Request_workflow;
+
+    /*   Apply Filter*/
+
+    @FindBy(xpath = "//i[@class='mdi mdi-filter-outline']")
+    private WebElement Filter;
+
+
+    @FindBy(xpath = "//input[@id='S1']")
+    private WebElement Activeemp;
+
+
+    @FindBy(xpath = "//label[text()='Under Probation']")
+    private WebElement Underprobation;
+
+    @FindBy(xpath = "//div[@class='dropdown']")
+    private WebElement dropdown1;
+
+    @FindBy(xpath = "//*[text()=' Leader In Group India Pvt Ltd ']")
+    private WebElement Allemp;
+
+    @FindBy(xpath = "//div[@class='dropdown']")
+    private WebElement locationdropdown;
+
+    @FindBy(xpath = "//*[text()=' India ']")
+    private WebElement India;
+
+    @FindBy(xpath = "//label[text()='Associate Test Engineer']")
+    private WebElement AutTestEng;
+
+    @FindBy(xpath = "//label[text()='India']")
+    private WebElement Indian;
+
+    @FindBy(xpath = "//label[text()='Contract']")
+    private WebElement contract;
+
+    @FindBy(xpath = "//button[text()='Apply Filters']")
+    private WebElement Apply;
+
+
+    @FindBy(xpath = "//*[text()='Associate Test Engineer']")
+    private List<WebElement> elements;
+
+
+
     //----------------------------------------------------------------------/
 
     public EmployeePage(WebDriver driver) {
@@ -237,5 +282,70 @@ public class EmployeePage {
         System.out.println("assert_employee creation done successfully");
 
     }
+    //Apply Filter
+    public boolean filtered() throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOf(homeMnu));
+        js.executeScript("arguments[0].click()", homeMnu);
+        wait.until(ExpectedConditions.visibilityOf(empMnu));
+        js.executeScript("arguments[0].click()", empMnu);
+        wait.until(ExpectedConditions.visibilityOf(Filter));
+        js.executeScript("arguments[0].click()", Filter);
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(dropdown1));
+        js.executeScript("arguments[0].click()", dropdown1);
+        Thread.sleep(2000);
+        js.executeScript("arguments[0].click()", Allemp);
+        System.out.println("All employees are selected");
+        wait.until(ExpectedConditions.visibilityOf(locationdropdown));
+        js.executeScript("arguments[0].click()", locationdropdown);
+        Thread.sleep(2000);
+        js.executeScript("arguments[0].click()", India);
+        System.out.println("India option  is selected");
+        js.executeScript("arguments[0].click()", AutTestEng);
+        System.out.println("Automation Test Engineer  is selected");
+        js.executeScript("arguments[0].click()", Indian);
+        System.out.println("India option  is selected");
+        js.executeScript("arguments[0].click()", contract);
+        System.out.println("Contract option  is selected");
+        js.executeScript("arguments[0].click()", Apply);
+
+        String text = "";
+        ArrayList<String> actValues = new ArrayList<String>();
+
+        ArrayList <String> expValues=new ArrayList<String>();
+        expValues.add("Associate Test Engineer");
+
+        for (int i = 0; i < elements.size(); i++)
+        {
+            elements.get(i).getText();
+            actValues.add(text);
+
+        }
+        boolean flag = true;
+        for (int i = 0; i < expValues.size(); i++)
+        {
+            if (flag == false)
+            {
+
+                break;
+            }
+        }
+        if(flag==true)
+
+
+        {
+
+            System.out.println("Fiter is as Expected");
+        }
+        else
+
+        {
+            System.out.println("Filter is Not as  Expected");
+        }
+        return flag;
+    }
+
+
+
 
 }
