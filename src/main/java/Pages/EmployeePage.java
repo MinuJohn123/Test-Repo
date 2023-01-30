@@ -41,8 +41,8 @@ public class EmployeePage {
     private WebElement enter_first_name_arabic;
     @FindBy(xpath = "//input[@placeholder='Employee ID']")
     private WebElement enter_emp_id;
-    @FindBy(xpath = "//input[@placeholder='National ID Number']")
-    private WebElement enter_national_id;
+    @FindBy(xpath = "//input[@placeholder='Adhaar']")
+    private WebElement enter_Adhaar;
     @FindBy(xpath = "(//span[@class='k-input'])[1]")
     private WebElement select_nationality;
     @FindBy(xpath = "//input[@class='k-textbox ng-untouched ng-pristine ng-valid']")
@@ -97,9 +97,9 @@ public class EmployeePage {
     private WebElement enter_bank_name;
     @FindBy(xpath = "//input[@placeholder='IBAN']")
     private WebElement enter_iban;
-    //--------------Add_Annual_leave_Attendance_Policy--------------------------//
-    @FindBy(xpath = "//a[normalize-space()='Annual Leave & Attendance Policy']")
-    private WebElement select_Annual_leave_Attendance_Policy;
+    //--------------Add_Earned_leave_Attendance_Policy--------------------------//
+    @FindBy(xpath = "(//li[@class='list-inline-item'])[4]")
+    private WebElement select_Earned_leave_Attendance_Policy;
     @FindBy(xpath = "//input[@id='leaveType0']")
     private WebElement select_leave_type;
     @FindBy(xpath = "//input[@id='shift1']")
@@ -165,12 +165,13 @@ public class EmployeePage {
         js = (JavascriptExecutor) driver;
 
     }
-    public String SearchByName(String strSearh) {
+    public String SearchByName(String strSearh) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(homeMnu));
         js.executeScript("arguments[0].click()", homeMnu);
         js.executeScript("arguments[0].click()", empMnu);
         js.executeScript("arguments[0].click()", searchTxt);
         searchTxt.sendKeys(strSearh);
+        Thread.sleep(4000);
         String searchName = "";
         //System.out.println("size is "+grdName.size());
         if (grdName.size() > 0) {
@@ -181,7 +182,7 @@ public class EmployeePage {
     }
 
     public void add_personal_info(String first_name,String first_name_arabic,String emp_id,
-                                  String national_id,String nationality,String email_id) throws  InterruptedException {
+                                  String Adhaar_number,String nationality,String email_id) throws  InterruptedException {
         js.executeScript("arguments[0].click()", homeMnu);
         js.executeScript("arguments[0].click()", empMnu);
         js.executeScript("arguments[0].click();", select_add);
@@ -189,7 +190,7 @@ public class EmployeePage {
         enter_first_name_arabic.sendKeys(first_name_arabic);
         Thread.sleep(4000);
         enter_emp_id.sendKeys(emp_id);
-        enter_national_id.sendKeys(national_id);
+        enter_Adhaar.sendKeys(Adhaar_number);
         js.executeScript("arguments[0].click();",select_nationality);
         enter_nationality.sendKeys(nationality);
         actions.sendKeys(Keys.ARROW_DOWN).perform();
@@ -260,10 +261,10 @@ public class EmployeePage {
 
     }
 
-    public void Annual_Leave_Attendance_Policy() throws InterruptedException {
+    public void Earned_Leave_Attendance_Policy() throws InterruptedException {
 
-        wait.until(ExpectedConditions.visibilityOf(select_Annual_leave_Attendance_Policy));
-        js.executeScript("arguments[0].click();", select_Annual_leave_Attendance_Policy);
+        wait.until(ExpectedConditions.visibilityOf(select_Earned_leave_Attendance_Policy));
+        select_Earned_leave_Attendance_Policy.click();
         select_leave_type.click();
         select_shift.click();
 

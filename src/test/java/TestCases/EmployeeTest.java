@@ -34,7 +34,7 @@ public class EmployeeTest extends BaseTest {
     }
 
     @Test(priority = 1)
-    public void assertSearchByNameTest() {
+    public void assertSearchByNameTest() throws InterruptedException {
         String searchName = employeeInfo.get("SearchName").getAsString();
         String result = employeePage.SearchByName(searchName);
         System.out.println("result : " + result);
@@ -47,7 +47,7 @@ public class EmployeeTest extends BaseTest {
         employeePage=new EmployeePage(webDriver);
 
         employeePage.add_personal_info(System.getProperty("add.Firstname"), System.getProperty("add.Firstname_arabic"),
-                System.getProperty("add.Emp_id"), System.getProperty("add.National_id"),
+                System.getProperty("add.Emp_id"), System.getProperty("add.Adhaar_number"),
                 System.getProperty("add.nationality"), System.getProperty("add.Email_id"));
 
 
@@ -73,8 +73,7 @@ public class EmployeeTest extends BaseTest {
     @Test(priority = 5)
     public void Annual_Leave_Attendance_Policy() throws InterruptedException {
 
-        employeePage.Annual_Leave_Attendance_Policy();
-
+        employeePage.Earned_Leave_Attendance_Policy();
 
     }
 
@@ -91,7 +90,7 @@ public class EmployeeTest extends BaseTest {
 
         filter=new EmployeePage(webDriver);
         boolean result= filter.filtered();
-        Assert.assertTrue(result,"Successful filter applied  ");
+        Assert.assertTrue(result,"Successful filter applied ");
 
 
 
