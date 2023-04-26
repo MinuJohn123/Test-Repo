@@ -73,7 +73,7 @@ public class LeaveRequestPage {
         js.executeScript("arguments[0].click()", saveReqBtn);
 
         String actualTxt = alerTxt.getText();
-        System.out.println("Actual Result is " + actualTxt);
+        System.out.println("Actual Result  is " + actualTxt);
 
         return actualTxt;
     }
