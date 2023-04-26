@@ -40,6 +40,7 @@ public class LeaveRequestTest extends BaseTest {
         String result = requestDemoPage.createRequest(leavereuestinfo.get("year").getAsString(), leavereuestinfo.get("day").getAsString(), leavereuestinfo.get("month").getAsString());
         String expectedTxt = "Successfully Created";
         Assert.assertEquals(result, expectedTxt);
+        System.out.println("Assertion Pass");
     }
 
 
