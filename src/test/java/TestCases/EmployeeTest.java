@@ -47,7 +47,7 @@ public class EmployeeTest extends BaseTest {
         employeePage=new EmployeePage(webDriver);
 
         employeePage.add_personal_info(System.getProperty("add.Firstname"), System.getProperty("add.Firstname_arabic"),
-                System.getProperty("add.Emp_id"), System.getProperty("add.Adhaar_number"),
+                System.getProperty("add.Emp_id"), System.getProperty("add.national_id"),
                 System.getProperty("add.nationality"), System.getProperty("add.Email_id"));
 
 
