@@ -198,7 +198,7 @@ public class EmployeePage {
         actions.sendKeys(Keys.ARROW_DOWN).perform();
         actions.sendKeys(Keys.ENTER).perform();
         enter_email_id.sendKeys(email_id);
-        System.out.println("Entered employee details:"+emp_id+" "+first_name);
+        System.out.println("Entered  employee details:"+emp_id+" "+first_name);
 
     }
 
@@ -282,7 +282,7 @@ public class EmployeePage {
         Request_workflow.click();
         String expected ="Successfully Created";
         Assert.assertEquals(Actual, expected);
-        System.out.println("assert_employee creation done successfully");
+        System.out.println("assert_employee creation done  successfully");
 
     }
     //Apply Filter
