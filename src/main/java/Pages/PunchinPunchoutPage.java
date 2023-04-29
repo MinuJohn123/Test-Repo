@@ -36,6 +36,11 @@ public class PunchinPunchoutPage {
     public WebElement checkin;
     @FindBy(xpath = " //tbody/tr/td[5]")
     public WebElement checkout;
+    @FindBy(xpath = "//span[@class='text-capitalize pl-1 pr-1']")
+    public WebElement profile;
+    @FindBy(xpath = "  //span[text()=' Logout ']")
+    public WebElement logout;
+
 
     public void clickPunchin()
 
@@ -49,7 +54,17 @@ public class PunchinPunchoutPage {
 
 
     }
+    public void clickprofile()
+    {  wait.until(ExpectedConditions.visibilityOf(profile));
+        js.executeScript("arguments[0].click()", profile);
 
+
+    } public void logout()
+    {  wait.until(ExpectedConditions.visibilityOf(logout));
+        js.executeScript("arguments[0].click()", logout);
+
+
+    }
 }
 
 

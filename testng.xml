@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="E:/Noha/Projects/fox hr/AutomationFoxHr">
+    <test verbose="2" preserve-order="true" name="E:/Noha/Projects/fox hr/AutomationFoxHr" >
         <classes>
             <class name="TestCases.EmployeeTest">
                 <methods>
@@ -11,13 +11,21 @@
                     <include name="Finances_Insurance"/>
                     <include name="Annual_Leave_Attendance_Policy"/>
                     <include name="Employee_creation_confirmation"/>
+                    <include name="Apply_filter"/>
+                </methods>
+            </class>
+            <class name="TestCases.PunchinPunchoutTest">
+                <methods>
+                    <include name="login_emp"/>
+                    <include name="punchin_punchout"/>
                 </methods>
             </class>
             <class name="TestCases.LeaveRequestTest">
                 <methods>
-                    <include name="assertRequestDemo"/>
+                  <include name="assertRequestDemo"/>
                 </methods>
             </class>
+
         </classes>
     </test>
 </suite>

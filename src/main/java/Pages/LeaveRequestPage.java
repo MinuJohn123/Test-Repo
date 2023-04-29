@@ -18,8 +18,11 @@ public class LeaveRequestPage {
     WebElement menuBtn;
     @FindBy(xpath = "//*[@routerlink=\"request\"]")
     WebElement requestsMenuItem;
-    @FindBy(xpath = "//*[@class=\"leave-travels-add-button ng-star-inserted\"]")
+   // @FindBy(xpath = "//*[@class=\"leave-travels-add-button ng-star-inserted\"]")
+   @FindBy(xpath = "//a[@class='leave-travels-add-button ng-star-inserted']")
     WebElement addLeaveReqBtn;
+
+
     @FindBy(xpath = "//input[@class=\"k-input k-formatted-value\"]")
     WebElement noDaysBtn;
     @FindBy(xpath = "//*[contains(text(),'Select')]")

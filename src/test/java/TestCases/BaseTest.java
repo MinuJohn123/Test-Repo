@@ -1,5 +1,6 @@
 package TestCases;
 
+import com.aventstack.extentreports.ExtentReports;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.OutputType;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
@@ -21,12 +23,22 @@ import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+
 
 public class BaseTest {
 
 public static WebDriver webDriver;
 public static WebDriverWait webDriverWait;
-
+    public static ExtentReports extent;
+    public static ExtentTest test;
+    public static ExtentSparkReporter sparkreport;
 
     @BeforeSuite
     public  static void lunchApplication()
@@ -41,6 +53,11 @@ public static WebDriverWait webDriverWait;
         // initialize explicit wait
         webDriverWait = new WebDriverWait(webDriver, 60);
         loadPropertiesFile();
+        //extent report
+        sparkreport = new ExtentSparkReporter("Spark.html");
+        extent = new ExtentReports();
+        extent.attachReporter(sparkreport);
+//////
 
     }
 
@@ -56,8 +73,22 @@ public static WebDriverWait webDriverWait;
         }
     }
 
+
     @AfterMethod
     public void takeScreenshotForFailingTests(ITestResult result) {
+        if (result.getStatus()==ITestResult.FAILURE){
+            test.fail(MarkupHelper.createLabel(result.getName()+ "testcase failed", ExtentColor.RED));
+            test.fail(result.getThrowable());
+        }
+        else if(result.getStatus()==ITestResult.SUCCESS)
+        {
+            test.pass(MarkupHelper.createLabel(result.getName()+ "testcase passed", ExtentColor.GREEN));
+            test.pass(result.getThrowable());
+        }
+        else {
+            test.skip(MarkupHelper.createLabel(result.getName()+ "testcase skipped", ExtentColor.YELLOW));
+            test.skip(result.getThrowable());
+        }
         if (ITestResult.FAILURE == result.getStatus()) {
             try {
                 //save current time
@@ -74,12 +105,15 @@ public static WebDriverWait webDriverWait;
             }
         }
     }
+    @AfterSuite
+    public void teardown(){
+        extent.flush();
+    }
 
     @AfterClass
     public static void closeBrowser() {
         // after each test class finish running quit the browser
         //webDriver.quit();
     }
-
 
 }

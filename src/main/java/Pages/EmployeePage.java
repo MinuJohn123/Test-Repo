@@ -41,8 +41,10 @@ public class EmployeePage {
     private WebElement enter_first_name_arabic;
     @FindBy(xpath = "//input[@placeholder='Employee ID']")
     private WebElement enter_emp_id;
-    @FindBy(xpath = "//input[@placeholder='Adhaar']")
-    private WebElement enter_Adhaar;
+    //    @FindBy(xpath = "//input[@placeholder='Adhaar']")
+    ///private WebElement enter_Adhaar;
+    @FindBy(xpath = "//input[@placeholder='National ID Number']")
+    private WebElement enter_national_id;
     @FindBy(xpath = "(//span[@class='k-input'])[1]")
     private WebElement select_nationality;
     @FindBy(xpath = "//input[@class='k-textbox ng-untouched ng-pristine ng-valid']")
@@ -182,7 +184,7 @@ public class EmployeePage {
     }
 
     public void add_personal_info(String first_name,String first_name_arabic,String emp_id,
-                                  String Adhaar_number,String nationality,String email_id) throws  InterruptedException {
+                                  String national_id,String nationality,String email_id) throws  InterruptedException {
         js.executeScript("arguments[0].click()", homeMnu);
         js.executeScript("arguments[0].click()", empMnu);
         js.executeScript("arguments[0].click();", select_add);
@@ -190,7 +192,8 @@ public class EmployeePage {
         enter_first_name_arabic.sendKeys(first_name_arabic);
         Thread.sleep(4000);
         enter_emp_id.sendKeys(emp_id);
-        enter_Adhaar.sendKeys(Adhaar_number);
+        js.executeScript("arguments[0].click();",enter_national_id);
+        enter_national_id.sendKeys(national_id);
         js.executeScript("arguments[0].click();",select_nationality);
         enter_nationality.sendKeys(nationality);
         actions.sendKeys(Keys.ARROW_DOWN).perform();

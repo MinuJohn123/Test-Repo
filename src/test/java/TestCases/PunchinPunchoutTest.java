@@ -24,9 +24,8 @@ public class PunchinPunchoutTest extends BaseTest {
         page_Punchin = new PunchinPunchoutPage(webDriver);
     }
 
-
-
-    @BeforeTest
+/*
+   @BeforeTest
 
     public void login(){
 
@@ -35,20 +34,37 @@ public class PunchinPunchoutTest extends BaseTest {
         // initialize an object from login page
         loginpage = new LoginPage(webDriver);
         // login with username and password provided from test.properties file
-        loginpage.Login(System.getProperty("account.username"),
-                System.getProperty("account.password"));
-        System.out.println("LoginTest Tc_001 Passed");
-        System.out.println("LoginTest 123Passed");
+        loginpage.Login(System.getProperty("account.username.employee"),
+                System.getProperty("account.password.employee"));
 
 
 
+
+
+    }*/
+@Test(priority = 8)
+    public void login_emp(){
+    test=extent.createTest("login_emp");
+
+        //open application URL
+        //webDriver.get(System.getProperty("target.homepage"));
+        // initialize an object from login page
+    page_Punchin.clickprofile();
+    page_Punchin.logout();
+
+        loginpage = new LoginPage(webDriver);
+        // login with username and password provided from test.properties file
+        loginpage.Login(System.getProperty("account.username.employee"),
+                System.getProperty("account.password.employee"));
+    Assert.assertTrue(1>0);
     }
 
-    @Test(description = "Punchin & Punchout")
+    @Test(priority = 9)
+
     public void punchin_punchout() throws InterruptedException {
+        test=extent.createTest("punchin_punchout");
         String value_checkin ="";
         String value_checkout ="";
-
         Boolean isPunchin = page_Punchin.punchinButton.isDisplayed();
         System.out.println("The system punched in"  +isPunchin);
         if(isPunchin){
@@ -69,7 +85,7 @@ public class PunchinPunchoutTest extends BaseTest {
         else {
             System.out.println("Punchin Failed");
         }
-
+        Assert.assertTrue(1>0);
     }
 
 

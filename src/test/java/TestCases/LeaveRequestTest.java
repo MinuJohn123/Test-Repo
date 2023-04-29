@@ -25,23 +25,30 @@ public class LeaveRequestTest extends BaseTest {
     }
 
 
-    @BeforeClass
+    /*@BeforeClass
     public void login() {
         //open application URL
         webDriver.get(System.getProperty("target.homepage"));
         // initialize an object from login page
         loginPage = new LoginPage(webDriver);
         // login with username and password provided from test.properties file
-        loginPage.Login(System.getProperty("account.username.employee"), System.getProperty("account.password"));
-    }
 
-    @Test
-    private void assertRequestDemo() {
+        loginPage.Login(System.getProperty("account.username.employee"),
+                System.getProperty("account.password.employee"));
+               System.out.println("Inside Leave req");
+    }*/
+
+
+
+    @Test(priority = 10)
+    public   void  assertRequestDemo() throws InterruptedException {
+        test=extent.createTest("assertRequestDemo");
         String result = requestDemoPage.createRequest(leavereuestinfo.get("year").getAsString(), leavereuestinfo.get("day").getAsString(), leavereuestinfo.get("month").getAsString());
+        Thread.sleep(2000);
         String expectedTxt = "Successfully Created";
         Assert.assertEquals(result, expectedTxt);
         System.out.println("Assertion Pass");
+        Assert.assertTrue(1>0);
     }
-
 
 }
