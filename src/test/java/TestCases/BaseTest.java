@@ -34,8 +34,8 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class BaseTest {
 
-public static WebDriver webDriver;
-public static WebDriverWait webDriverWait;
+    public static WebDriver webDriver;
+    public static WebDriverWait webDriverWait;
     public static ExtentReports extent;
     public static ExtentTest test;
     public static ExtentSparkReporter sparkreport;
@@ -54,14 +54,14 @@ public static WebDriverWait webDriverWait;
         webDriverWait = new WebDriverWait(webDriver, 60);
         loadPropertiesFile();
         //extent report
-        sparkreport = new ExtentSparkReporter("Spark.html");
+        sparkreport = new ExtentSparkReporter("Extentreport.html");
         extent = new ExtentReports();
         extent.attachReporter(sparkreport);
 //////
 
     }
 
-       protected static void loadPropertiesFile() {
+    protected static void loadPropertiesFile() {
         // load property file (test.properties)
         Properties props = System.getProperties();
         try {
