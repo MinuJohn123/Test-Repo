@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.util.Calendar;
 
@@ -106,7 +107,7 @@ public class LeaveRequestPage {
 
         return actualTxt;
     }*/
-public String createRequest(String month, String day, String year) throws InterruptedException {
+public void createRequest(String month, String day, String year) throws InterruptedException {
 
     wait.until(ExpectedConditions.elementToBeClickable(menuBtn));
     js.executeScript("arguments[0].click()", menuBtn);
@@ -136,8 +137,8 @@ public String createRequest(String month, String day, String year) throws Interr
     js.executeScript("arguments[0].click()", saveReqBtn);
 
     String actualTxt = alerTxt.getText();
+    String expectedTxt = "Successfully Created";
     System.out.println("Actual Result  is " + actualTxt);
+    Assert.assertEquals(expectedTxt, actualTxt);
 
-    return actualTxt;
-}
-}
+}}
